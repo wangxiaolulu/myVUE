@@ -105,7 +105,17 @@
 + <router-view></router-view>
 ###　3.2 动态路由配置
 ###　3.3 嵌套路由
++ 同一页面不同标签切换
 ###　3.4 编程试路由
++ 什么是编程式路由？
+	- 通过js来实现页面的跳转
+	- $router.push("name")
+	- $router.push({path:"name"})
+	- $router.push({path:"name?a=123"})或者$router.push({path:"name",query:{a:123}})
+	- $router.go(1)
 ###　3.5 命名路由和命名视图
++ 什么是命名路由和命名视图？
+	- 给路由定义不同的名字，根据名字进行匹配
+	- 给不同的router-view定义名字，通过名字进行对应组件的渲染
 ## 第四章 Vue-resource和Axios
 ## 第五章 ES6常用语法
