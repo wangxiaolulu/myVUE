@@ -118,4 +118,30 @@
 	- 给路由定义不同的名字，根据名字进行匹配
 	- 给不同的router-view定义名字，通过名字进行对应组件的渲染
 ## 第四章 Vue-resource和Axios
++ 引入
+	- <script src=""></script>
+	- npm install vue-resource  --save
++ vue-resource的请求API是按照REST风格设计的。7种
+	- get(url,[options])
+	- head(url,[options])
+	- delete(url,[options])
+	- jsonp(url,[options])
+	- post(url,[body],[options])
+	- put(url,[body],[options])
+	- patch(url,[body],[options])
++ 全局拦截器  interceptors
+```javascript
+Vue.http.interceptors.push((request,next)=>{
+	//...
+	<!-- 请求发送前的处理逻辑 -->
+	//...
+	next((response)=>{
+		//...
+		//请求发送后的处理逻辑
+		//...
+		//根据请求的状态，response参数会返回给successCallback或errorCallback
+		return response
+	})
+})
+```
 ## 第五章 ES6常用语法
