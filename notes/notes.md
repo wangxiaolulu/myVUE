@@ -158,3 +158,7 @@ Vue.http.interceptors.push((request,next)=>{
     - axios.post(url,data[,config])
     - axios.put(url,data[,config])
 ## 第五章 ES6常用语法
+### 5.2 ES6常用命令
+#### 函数的Rest参数和扩展
+#### Promise使用
+#### module.export和ES6 import/export的使用

@@ -27,6 +27,10 @@
         console.log("request init")
         return config;
       })
+      axios.interceptors.response.use(function (response) {
+        console.log("response init")
+        return response
+      })
     },
 
     methods:{
