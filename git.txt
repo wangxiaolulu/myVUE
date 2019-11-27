@@ -1,0 +1,8 @@
+git config --global user.name "wangxiaolulu"
+git config --global user.email "540582941@qq.com"
+ssh-keygen -t rsa -C "540582941@qq.com"
+直接回车
+ssh -T git@github.com
+yes
+git pull origin master
+

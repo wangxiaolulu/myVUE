@@ -118,6 +118,7 @@
 	- 给路由定义不同的名字，根据名字进行匹配
 	- 给不同的router-view定义名字，通过名字进行对应组件的渲染
 ## 第四章 Vue-resource和Axios
+### vue-resource
 + 引入
 	- <script src=""></script>
 	- npm install vue-resource  --save
@@ -144,4 +145,16 @@ Vue.http.interceptors.push((request,next)=>{
 	})
 })
 ```
+### axios
++ 引入
+    - <script src=""></script>
+    - npm install axios --save
++ API
+    - axios.request(config)
+    - axios.get(url,[,config])
+    - axios.delete(url,[,config])
+    - axios.head(url,[,config])
+    - axios.options(url,[,config])
+    - axios.post(url,data[,config])
+    - axios.put(url,data[,config])
 ## 第五章 ES6常用语法
