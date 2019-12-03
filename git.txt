@@ -1,8 +1,54 @@
-git config --global user.name "wangxiaolulu"
+﻿git config --global user.name "wangxiaolulu"
 git config --global user.email "540582941@qq.com"
 ssh-keygen -t rsa -C "540582941@qq.com"
-ֱ�ӻس�
+直接回车
 ssh -T git@github.com
 yes
 git pull origin master
+
+
+步骤：
+git clone http://
+git add *
+git commit -m ""
+git push origin master
+
+上传
+
+一、初次安装git需要配置用户名和邮箱：
+
+
+$ git config --global user.name "your_name"
+
+
+$ git config --global user.email "your_email@163.com"
+
+
+
+
+
+二、然后生成密钥对
+
+
+$ ssh-keygen -t rsa -C "your_email@youremail.com"
+
+
+
+三、添加公钥到你的远程仓库（github）
+
+四、在github创建项目
+获取 SSH 或者 HTTPS 地址
+
+五、通过git init命令把这个目录变成Git可以管理的仓库
+
+
+
+git pull
+按照git branch 设置的默认跟踪的服务器和分支来拉取。
+
+
+拉取远程服务器origin的master分支
+
+git pull origin master
+
 
