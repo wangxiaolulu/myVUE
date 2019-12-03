@@ -162,3 +162,31 @@ Vue.http.interceptors.push((request,next)=>{
 #### 函数的Rest参数和扩展
 #### Promise使用
 #### module.export和ES6 import/export的使用
+
+## 第六章 商品列表模块实现
+### 6.1商品列表组件拆分
++ Header组件
++ Footer组件
++ 面包屑组件
+### 6.2商品列表数据渲染
++ 模拟mock数据，加载商品列表信息
++ 因为最新版本的vue-cli已经放弃dev-server.js，只需在webpack.dev.conf.js配置就行
+1、在const portfinder = require(‘portfinder’)后添加
+
+const express = require('express')
+const app = express()
+var appData = require('../mock/goods.json')//加载本地数据文件
+var apiRoutes = express.Router()
+app.use('/api', apiRoutes)
+2、//然后找到devServer,在里面添加
+
+ before(app) {
+      app.get('/api/appData', (req, res) =&gt; {
+        res.json({
+          errno: 0,
+          data: appData
+        })//接口返回json数据，上面配置的数据appData就赋值给data请求后调用
+      })
+    }
+3、然后npm run dev，一定要重启 一下就可以http://localhost:8080/api/appData 访问了
+### 6.3实现图片懒加载
