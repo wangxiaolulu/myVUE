@@ -171,22 +171,60 @@ Vue.http.interceptors.push((request,next)=>{
 ### 6.2商品列表数据渲染
 + 模拟mock数据，加载商品列表信息
 + 因为最新版本的vue-cli已经放弃dev-server.js，只需在webpack.dev.conf.js配置就行
-1、在const portfinder = require(‘portfinder’)后添加
-
+ - 在const portfinder = require(‘portfinder’)后添加
+```javascript
 const express = require('express')
 const app = express()
 var appData = require('../mock/goods.json')//加载本地数据文件
 var apiRoutes = express.Router()
 app.use('/api', apiRoutes)
-2、//然后找到devServer,在里面添加
-
- before(app) {
-      app.get('/api/appData', (req, res) =&gt; {
+```
+ - 然后找到devServer,在里面添加
+```javascript
+    before(app) {
+      app.get('/api/appData', (req, res) => {
         res.json({
           errno: 0,
           data: appData
         })//接口返回json数据，上面配置的数据appData就赋值给data请求后调用
       })
     }
-3、然后npm run dev，一定要重启 一下就可以http://localhost:8080/api/appData 访问了
+```
+ - 然后npm run dev，一定要重启 一下就可以http://localhost:8080/api/appData 访问了
 ### 6.3实现图片懒加载
++ https://www.npmjs.com/package/vue-lazyload
++ 安装
+ - npm i vue-lazyload -S
++ 使用
+ - main.js
+ ```javascript
+import Vue from 'vue'
+import App from './App.vue'
+import VueLazyload from 'vue-lazyload'
+ 
+Vue.use(VueLazyload)
+ 
+// or with options
+Vue.use(VueLazyload, {
+  preLoad: 1.3,
+  error: 'dist/error.png',
+  loading: 'dist/loading.gif',
+  attempt: 1
+})
+ 
+new Vue({
+  el: 'body',
+  components: {
+    App
+  }
+})
+```
+  - template:
+  ```html
+<ul>
+  <li v-for="img in list">
+    <img v-lazy="img.src" >
+  </li>
+</ul>
+```
+  -  
