@@ -10,6 +10,7 @@ git pull origin master
 步骤：
 git clone http://
 git add *
+git status
 git commit -m ""
 git push origin master
 

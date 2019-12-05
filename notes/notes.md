@@ -227,4 +227,47 @@ new Vue({
   </li>
 </ul>
 ```
-  -  
+## 第七章 Node
+### 7.1 linux环境搭建
+
+### 7.2 创建httpserver
++ node特点
+ - 基于chrome  V8引擎
+ - 单线程
+ - 使用javascript开发后端代码
+ - 非阻塞的IO
++ node运行文件
+    ```node Demo```
+### 7.3 通过node加载静态资源
+
+### 7.4 搭建基于Express框架的运行环境
++ 安装express generator生成器
+    - npm i -g express-generator
+    - 查看  express --version
+    - 创建项目 express server
+    - 一般前后端分离，server单独执行 npm install
+    - 该项目不分离，将server中package.json合并到源项目的package
+    - 安装ejs   npm i ejs --save
++ 通过生成器自动创建项目
+= 配置分析
+## 第八章 MongoDB介绍
+### 8.1 window下mongodb环境搭建
++ mongodb是非关系型 NoSQL数据库
+    - 优点
+        - 高可扩展性
+        - 分布式存储
+        - 低成本
+        - 结构灵活
+    - 下载安装包或者压缩包
+    - 添加db存储和日志存储文件夹
+    - 添加服务、配置环境变量、启动mongo
++ 安装配置
+    - 新建MongoDB,在文件夹里新建data、etc、logs文件夹
+    - etc中新建mongodb.conf文件
+    - 打开cmd，进入安装好的mongodb的bin目录
+    - 执行命令：mongod --dbpath path  (指定db存储在哪里,path为data目录)
+    - 打开配置文件mongodb.conf，添加配置信息
+### 8.2 linux平台下的搭建
+### 8.3 给mongodb创建用户
+### 8.4 mongodb基本语法
+### 8.5 表数据设计和插入
