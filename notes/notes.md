@@ -261,13 +261,36 @@ new Vue({
     - 下载安装包或者压缩包
     - 添加db存储和日志存储文件夹
     - 添加服务、配置环境变量、启动mongo
-+ 安装配置
++ 安装配置（32位）（64位直接下载暗黄，查看任务管理器-服务-mongodb是否启动，打开http://localhost:27017/。查看是否返回一行信息It looks like you are trying to access MongoDB over HTTP on the native driver port.返回就安装成功）
     - 新建MongoDB,在文件夹里新建data、etc、logs文件夹
     - etc中新建mongodb.conf文件
     - 打开cmd，进入安装好的mongodb的bin目录
     - 执行命令：mongod --dbpath path  (指定db存储在哪里,path为data目录)
     - 打开配置文件mongodb.conf，添加配置信息
-### 8.2 linux平台下的搭建
+### 8.2 linux平台下的搭建 
 ### 8.3 给mongodb创建用户
++ 创建管理员
++ 授权认证
++ 给使用的数据库添加用户
 ### 8.4 mongodb基本语法
++ 数据库对比
++ 插入文档
++ 更新文档
++ 删除文档
++ 查询文档
 ### 8.5 表数据设计和插入
+
+## 第九章 基于node.js开发商品列表接口
+### 9.1 node的启动和调试
++ 通过node命令启动
+    - node bin/www    通过localhost:3000 查看状态
++ webstorm配置启动入口
++ pm2
+    - npm install pm2 -g
+    - pm2 -v
+    - pm2 start app.js
+    - pm2 stop all
+### 9.2 基于Express实现商品列表查询接口
+### 9.3 商品列表分页和排序功能实现
+### 9.4 价格过滤功能实现
+### 9.5 加入购物车功能实现
