@@ -291,6 +291,13 @@ new Vue({
     - pm2 start app.js
     - pm2 stop all
 ### 9.2 基于Express实现商品列表查询接口
++ 安装Mongoose
++ 创建model
++ 创建路由
++ 基于mongoose，实现商品列表的查询功能
 ### 9.3 商品列表分页和排序功能实现
+
++安装vue-infinite-scroll   https://www.npmjs.com/package/vue-infinite-scroll
+    - npm install vue-infinite-scroll --save
 ### 9.4 价格过滤功能实现
 ### 9.5 加入购物车功能实现

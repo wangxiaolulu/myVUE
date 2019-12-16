@@ -10,12 +10,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 
-// 添加mock数据
+/*// 添加mock数据
 const express = require('express')
 const app = express()
 const goodsData = require('./../mock/goods.json');
 const apiRouter = express.Router();
-app.use('/api',apiRouter);
+app.use('/api',apiRouter);*/
 
 
 const HOST = process.env.HOST
@@ -51,14 +51,14 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     watchOptions: {
       poll: config.dev.poll,
     },
-    before(app) {
+    /*before(app) {
       app.get('/api/goodsData', (req, res) => {
         res.json({
           errno: 0,
           data: goodsData
         })//接口返回json数据，上面配置的数据appData就赋值给data请求后调用
       })
-    }
+    }*/
   },
   plugins: [
     new webpack.DefinePlugin({
