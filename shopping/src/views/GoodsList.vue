@@ -11,10 +11,11 @@
             <a href="javascript:void(0)" class="default cur">
               Default
             </a>
-            <a href="javascript:void(0)" class="price" @click="sortGoods">
+            <a href="javascript:void(0)" class="price" @click="sortGoods" v-bind:class="{'sort-up':!sortFlag}">
               Price
               <svg class="icon icon-arrow-short">
-                <use xlink:href="#icon-arrow-short"></use>
+<!--                <use xlink:href="#icon-arrow-short"></use>-->
+                <use xmlns:xlink="http://ww.w3.org/1999/xlink" xlink:href="#icon-arrow-short"></use>
               </svg>
             </a>
             <a href="javascript:void(0)" class="filterby stopPop" @click="showFilterPop">
@@ -26,7 +27,9 @@
             <div class="filter stopPop" id="filter" v-bind:class="{'filterBy-show':filterBy}">
               <dl class="filter-price">
                 <dt>Price:</dt>
-                <dd><a href="javascript:void(0)" v-bind:class="{'cur':priceChecked=='all'}" @click="priceChecked='all'">All</a></dd>
+                <dd>
+                  <a href="javascript:void(0)" v-bind:class="{'cur':priceChecked=='all'}" @click="priceChecked='all'">All</a>
+                </dd>
                 <dd v-for="(price,index) in priceFilter">
                   <a href="javascript:void(0)" v-bind:class="{'cur':priceChecked==index}"  @click="setPriceFilter(index)">{{price.startPrice}} - {{price.endPrice}}</a>
                 </dd>
@@ -59,6 +62,26 @@
         </div>
       </div>
       <div class="md-overlay" v-show="overLayFlag" @click="closePop"></div>
+      <modal v-bind:mdShow="mdShow" v-on:close="closeModal">
+        <p slot="message">
+          请先登录，否则无法加入购物车！
+        </p>
+        <div slot="btnGroup">
+          <a href="javascript:;" class="btn btn--m" @click="mdShow=false">关闭</a>
+        </div>
+      </modal>
+      <modal v-bind:mdShow="mdShowCart" v-on:close="closeModal">
+        <p slot="message">
+          <svg class="icon-status-ok">
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-status-ok"></use>
+          </svg>
+          <span>加入购物车成!</span>
+        </p>
+        <div slot="btnGroup">
+          <a href="javascript:;" class="btn btn--m" @click="mdShowCart=false">继续购物</a>
+          <router-link class="btn btn--m" to="/cart">查看购物车</router-link>
+        </div>
+      </modal>
       <nav-footer></nav-footer>
     </div>
 </template>
@@ -86,6 +109,7 @@
   .icon-arrow-short{
     width: 11px;
     height: 11px;
+    transition: all .3s ease-out;
   }
   .goods-container{
     display: flex;
@@ -179,6 +203,14 @@
     line-height: 100px;
     text-align: center;
   }
+  .sort-up{
+    transform: rotate(180deg);
+    transition: all .3s ease-out;
+  }
+  .btn:hover{
+    background-color: #ffe5e6;
+    transition: all .3s ease-out;
+  }
 </style>
 <script>
     import './../assets/css/base.css'
@@ -186,6 +218,7 @@
     import NavHeader from "../components/NavHeader"
     import NavFooter from "../components/NavFooter"
     import NavBread from "../components/NavBread"
+    import Modal from '../components/Modal'
     import axios from "axios"
 
     export default {
@@ -217,14 +250,17 @@
           page:1,
           pageSize:8,
           busy:true,
-          loading:false
+          loading:false,
+          mdShow:false,
+          mdShowCart:false
         }
       },
       name: "GoodsList",
       components:{
         NavHeader,
         NavFooter,
-        NavBread
+        NavBread,
+        Modal
       },
       mounted() {
         this.getGoodsList()
@@ -296,11 +332,14 @@
           }).then((res)=>{
             let resM = res.data;
             if(resM.status==0){
-              alert("加入成功")
+              this.mdShowCart = true
             }else{
-              alert("msg:"+res.msg)
+              this.mdShow = true
             }
           })
+        },
+        closeModal(){
+          this.mdShow = false
         }
       }
     }

@@ -301,3 +301,13 @@ new Vue({
     - npm install vue-infinite-scroll --save
 ### 9.4 价格过滤功能实现
 ### 9.5 加入购物车功能实现
+
+## 第十章  登录模块实现
+### 10.1  登录功能实现
+### 10.2  登出功能实现
++ 插件  supervisor  自启动node
++ express-session  插件用来做session存储
+### 10.3  登录拦截
+### 10.4  全局模态框组件实现
+## 第十一章 购物车模块实现
+
