@@ -113,14 +113,12 @@ router.post("/addCart",function (req,res,next) {
         }else{
           Goods.findOne({productId:productId},function (err1,doc) {
             if(err1){
-              console.log(err1);
               res.json({
                 status:"1",
                 msg:err1.message
               })
             }else{
               if(doc){
-                console.log(doc);
                 doc.productNum = 1;
                 doc.checked = 1;
                 userDoc.cartList.push(doc);
