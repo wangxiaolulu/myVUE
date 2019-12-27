@@ -332,7 +332,32 @@ new Vue({
     - Vuex是一个专为Vue.js应用程序开发的状态管理模式
 + 为什么要用Vuex
     - 当我们构建一个中大型的单页面应用程序时，Vuex可以更好的帮助我们在组件外部统一管理状态
++ 安装
+    - npm install vuex --save
 + Vuex核心概念
+    - State
+        - State是唯一数据源
+        - 单一状态树      
+                ```javascript
+                    // 创建一个 Counter 组件
+                    const Counter = {
+                      template: `<div>{{ count }}</div>`,
+                      computed: {
+                        count () {
+                          return store.state.count
+                        }
+                      }
+                    }  
+                ```
+    - Getters
+        - 通过getters可以派生出一些新的状态
+    - Mutations
+        - 更改vuex的store中的状态的唯一方法是提交mutation
+    - Action
+        - Action提交的是mutation，而不是直接变更状态
+        - Action可以包含任何异步操作
+    - Modules
+        - 面对复杂的的应用程序，当管理的状态较多时，我们需要将vuex的store对象分割成模块（modules）
 ### 15.2 Vuex的语法讲解
 ### 15.3 15.4 通过Vuex实现登录和购物车数量
 
